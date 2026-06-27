@@ -6,21 +6,18 @@
 <title>KhamChat Pro</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
-:root{--bg1:#f5f3ff;--bg2:#ede9fe;--accent:#25D366;--accent2:#128C7E;--gold:#fbbf24;--green:#10b981;--blue:#3b82f6;
---text:#1f2937;--text2:#6b7280;--card:#fff;--border:rgba(37,211,102,0.2);}
+:root{--bg1:#f5f3ff;--bg2:#ede9fe;--accent:#8b5cf6;--gold:#fbbf24;--green:#10b981;--blue:#3b82f6;
+--text:#1f2937;--text2:#6b7280;--card:#fff;--border:rgba(139,92,246,0.2);}
 body.dark{--bg1:#0a0a1f;--bg2:#1a0f2e;--text:#f3f4f6;--text2:#a1a1aa;--card:rgba(26,15,46,0.7);}
 html,body{height:100dvh;width:100vw;overflow:hidden;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:var(--text)}
 #app{height:100dvh;width:100vw;display:flex;flex-direction:column}
 .glass{background:var(--card);backdrop-filter:blur(20px);border:1px solid var(--border)}
 .header{background:var(--card);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border)}
 .header h1{font-size:24px;font-weight:700;color:var(--accent)}
-.headerRight{display:flex;gap:12px;align-items:center}
-.iconCircle{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(37,211,102,0.3)}
-.iconCircle svg{width:22px;height:22px;fill:#fff}
+.headerRight{display:flex;gap:16px;align-items:center}
 .tabs{display:flex;justify-content:space-around;background:var(--card);padding:8px;margin:12px;border-radius:16px}
-.tab{cursor:pointer;padding:10px 18px;border-radius:12px;font-weight:600;color:var(--text2);font-size:14px;transition:0.3s;display:flex;align-items:center;gap:6px}
+.tab{cursor:pointer;padding:10px 18px;border-radius:12px;font-weight:600;color:var(--text2);font-size:14px;transition:0.3s}
 .tab.active{background:var(--accent);color:#fff}
-.tab svg{width:18px;height:18px;fill:currentColor}
 #chatArea{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
 .userItem,.groupItem,.callItem{background:var(--card);padding:16px;border-radius:16px;margin-bottom:8px;cursor:pointer;display:flex;align-items:center;gap:14px;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
 .userItem b{font-size:16px}
@@ -41,11 +38,9 @@ html,body{height:100dvh;width:100vw;overflow:hidden;background:linear-gradient(1
 .bottom{display:none;gap:8px;padding:12px 16px;background:var(--card);border-top:1px solid var(--border)}
 .bottom.show{display:flex}
 .bottom input{flex:1;padding:14px 18px;background:var(--bg2);border:none;border-radius:24px;color:var(--text);outline:none;font-size:15px}
-.bottom button{width:48px;height:48px;border-radius:50%;background:var(--accent);border:none;color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.iconBtn{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--bg2)}
-.iconBtn svg{width:24px;height:24px;fill:var(--text2)}
-.iconBtn.recording{background:red;animation:pulse 1s infinite}
-.iconBtn.recording svg{fill:#fff}
+.bottom button{width:48px;height:48px;border-radius:50%;background:var(--accent);border:none;color:#fff;font-size:20px;cursor:pointer}
+.iconBtn{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--text2);cursor:pointer;background:var(--bg2)}
+.iconBtn.recording{background:red;color:#fff;animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px);display:none;flex-direction:column;justify-content:center;align-items:center;z-index:2000}
 .modal.show{display:flex}
@@ -60,8 +55,7 @@ html,body{height:100dvh;width:100vw;overflow:hidden;background:linear-gradient(1
 .statusBar{display:flex;gap:12px;padding:12px 16px;overflow-x:auto;background:var(--card);border-bottom:1px solid var(--border)}
 .statusItem{text-align:center;cursor:pointer;flex-shrink:0}
 .statusItem img{width:60px;height:60px;border-radius:50%;object-fit:cover}
-#botBtn{position:fixed;bottom:80px;right:20px;z-index:1000;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);cursor:pointer;border:none}
-#botBtn svg{width:28px;height:28px;fill:#fff}
+#botBtn{position:fixed;bottom:80px;right:20px;z-index:1000;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#4285F4,#34A853,#FBBC04,#EA4335);display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 4px 20px rgba(66,133,244,0.4);cursor:pointer;border:none;color:#fff}
 </style>
 </head>
 <body>
@@ -70,30 +64,15 @@ html,body{height:100dvh;width:100vw;overflow:hidden;background:linear-gradient(1
 <div class="header glass">
 <h1>KhamChat</h1>
 <div class="headerRight">
-<!-- Earned Money Icon -->
-<div class="iconCircle" id="moneyBtn" title="Earned Money">
-<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-</div>
-<!-- Earned Graph Icon -->
-<div class="iconCircle" id="setBtn" title="Earned">
-<svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
-</div>
+<span style="font-size:28px;cursor:pointer" id="moneyBtn">💰</span>
+<span style="font-size:24px;cursor:pointer" id="setBtn">⚙️</span>
 </div>
 </div>
 
 <div class="tabs glass">
-<!-- Chats Tab = WhatsApp Phone Icon -->
-<div class="tab active" id="tabChats">
-<svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.57c.27-.27.35-.66.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0.99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
-Chats</div>
-<!-- Users Tab = Contact Icon -->
-<div class="tab" id="tabUsers">
-<svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-Users</div>
-<!-- Calls Tab = WhatsApp Phone Icon -->
-<div class="tab" id="tabCalls">
-<svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.57c.27-.27.35-.66.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0.99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
-Calls</div>
+<div class="tab active" id="tabChats">Chats</div>
+<div class="tab" id="tabUsers">Users</div>
+<div class="tab" id="tabCalls">Calls</div>
 </div>
 
 <div class="statusBar glass" id="statusBar" style="display:none"></div>
@@ -107,28 +86,17 @@ Calls</div>
 <div id="chatArea"></div>
 
 <div class="bottom glass" id="bottomBar">
-<!-- Video Call Icon -->
-<span class="iconBtn" id="imgBtn" title="Video/Image">
-<svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1.45-1 1v10c0.55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
-</span>
-<!-- Voice Note Icon -->
-<span class="iconBtn" id="micBtn" title="Voice Note">
-<svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/><g opacity="0.5"><path d="M3 10v2c0 1.1.9 2 2 2h1v-2H5c-.55 0-1-.45-1-1v-1H3v2zM21 10v2c0 1.1-.9 2-2 2h-1v-2h1c.55 0 1-.45 1-1v-1h1v2z"/></g></svg>
-</span>
+<span class="iconBtn" id="imgBtn">📎</span>
+<span class="iconBtn" id="micBtn">🎤</span>
 <input type="file" id="mediaInput" accept="image/*,video/*" style="display:none">
 <input id="messageInput" placeholder="Type message...">
-<button id="sendBtn">
-<svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#fff"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-</button>
+<button id="sendBtn">➤</button>
 </div>
 </div>
 
-<!-- Gemini Bot Icon Green -->
-<button id="botBtn" title="Khamis AI">
-<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-</button>
+<button id="botBtn">✨</button>
 
-<!-- MODALS SAME AS BEFORE -->
+<!-- MODALS -->
 <div class="modal" id="setup"><div class="modalBox">
 <h2>Setup Profile</h2><input id="username" placeholder="Musa_Kano" maxlength="15">
 <button class="btn" id="startBtn">Start</button>
@@ -158,7 +126,7 @@ Calls</div>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp, query, orderBy, updateDoc, deleteDoc, doc, setDoc, getDocs, where, arrayUnion } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp, query, orderBy, updateDoc, deleteDoc, doc, setDoc, getDocs, where, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
 const firebaseConfig = {apiKey:"AIzaSyAsFeKfeYTIGzP221hwPlFBHPiYyy-TLqE",authDomain:"khamchat-1d5a4.firebaseapp.com",projectId:"khamchat-1d5a4",storageBucket:"khamchat-1d5a4.firebasestorage.app",messagingSenderId:"515176934851",appId:"1:515176934851:web:4ec261196d1ff497666176"};
@@ -198,7 +166,7 @@ if(MONETAG_KEY === "PASTE_MONETAG_KEY_HERE"){toast("Add Monetag Key first");retu
 const s = document.createElement('script'); s.src = `https://www.monetag.com/script.js?key=${MONETAG_KEY}`; document.body.appendChild(s); toast('Ad opened +$0.001');
 }
 
-// === TABS ===
+// === 1. CHATS, 2. USERS, 3. CALLS TABS ===
 document.getElementById("tabChats").onclick = () => {setTab('Chats'); loadChats();}
 document.getElementById("tabUsers").onclick = () => {setTab('Users'); loadUsers();}
 document.getElementById("tabCalls").onclick = () => {setTab('Calls'); loadCalls();}
@@ -215,15 +183,18 @@ async function loadUsers(){
 document.getElementById("chatArea").innerHTML = '<div style="text-align:center;color:var(--text2)">Loading...</div>';
 const snap = await getDocs(collection(db,'users')); let html='';
 snap.forEach(d=>{if(d.id === me.uid) return; const u=d.data(); html += `<div class="userItem" onclick="openChat('${d.id}','${u.displayName}')">👤 <div><b>${u.displayName}</b><br><span>Tap to chat</span></div></div>`;});
-html += `<div class="userItem" onclick="openBotChat()">🤖 <div><b>Khamis AI</b><br><span style="color:var(--gold)">Ask me anything</span></div></div>`;
+html += `<div class="userItem" onclick="openBotChat()">✨ <div><b>Khamis AI</b><br><span style="color:var(--gold)">Ask me anything</span></div></div>`;
 document.getElementById("chatArea").innerHTML = html;
 }
 
 async function loadCalls(){
 document.getElementById("chatArea").innerHTML = '<div style="text-align:center;color:var(--text2);margin-top:40px">No calls yet 📞</div>';
+const snap = await getDocs(query(collection(db,'calls'), where('members','array-contains',me.uid), orderBy('time','desc')));
+let html=''; snap.forEach(d=>{const c=d.data(); html += `<div class="callItem">📞 <div><b>${c.withName}</b><br><span>${c.type} • ${new Date(c.time?.toDate()).toLocaleTimeString()}</span></div></div>`;});
+document.getElementById("chatArea").innerHTML = html || '<div style="text-align:center;color:var(--text2)">No calls yet</div>';
 }
 
-// === STATUS ===
+// === 4. STORY/STATUS ===
 async function loadStatusBar(){
 document.getElementById("statusBar").style.display='flex';
 const snap = await getDocs(query(collection(db,'status'), where('time','>',new Date(Date.now()-24*3600*1000))));
@@ -239,7 +210,7 @@ document.getElementById("statusModal").classList.remove('show'); loadStatusBar()
 }
 window.viewStatus = (url) => {window.open(url,'_blank');}
 
-// === GROUP + CHAT + BOT ===
+// === 5. GROUP CHATS ===
 window.openGroup = (gid, name) => {
 currentChatId = 'group_'+gid; document.getElementById("chatWithName").innerText = name;
 document.getElementById("chatArea").innerHTML = ''; document.getElementById("chatHeader").classList.add('show'); document.getElementById("bottomBar").classList.add('show');
@@ -253,6 +224,7 @@ document.getElementById("groupModal").classList.remove('show'); loadChats();
 }
 document.getElementById("cancelGroupBtn").onclick = () => document.getElementById("groupModal").classList.remove('show');
 
+// === 6. 1-1 CHAT + 7. BOT ===
 window.openChat = (uid, name) => {
 currentChatId = [me.uid, uid].sort().join('_'); document.getElementById("chatWithName").innerText = name;
 document.getElementById("chatArea").innerHTML = ''; document.getElementById("chatHeader").classList.add('show'); document.getElementById("bottomBar").classList.add('show');
@@ -260,7 +232,7 @@ const q = query(collection(db,'chats',currentChatId,'messages'), orderBy("time",
 onSnapshot(q,(snapshot)=>{renderMessages(snapshot); if(snapshot.docs.length) updateDoc(doc(db,"chats",currentChatId,"messages",snapshot.docs[snapshot.docs.length-1].id),{seen:true});});
 }
 window.openBotChat = () => {
-currentChatId = "bot_chat_"+me.uid; document.getElementById("chatWithName").innerText = "Khamis AI";
+currentChatId = "bot_chat_"+me.uid; document.getElementById("chatWithName").innerText = "Khamis AI ✨";
 document.getElementById("chatArea").innerHTML = ''; document.getElementById("chatHeader").classList.add('show'); document.getElementById("bottomBar").classList.add('show');
 const q = query(collection(db,'chats',currentChatId,'messages'), orderBy("time","asc"));
 onSnapshot(q,(snapshot)=>{renderMessages(snapshot);});
@@ -268,7 +240,7 @@ onSnapshot(q,(snapshot)=>{renderMessages(snapshot);});
 document.getElementById("botBtn").onclick = () => openBotChat();
 document.getElementById("backBtn").onclick = () => {currentChatId=null; document.getElementById("chatHeader").classList.remove('show'); document.getElementById("bottomBar").classList.remove('show'); document.getElementById("tabChats").click();}
 
-// === MESSAGES ===
+// === RENDER MESSAGES WITH 8. REACTIONS 9. EDIT 10. DELETE 11. SEEN TICKS ===
 function renderMessages(snapshot){
 let area = document.getElementById("chatArea"); area.innerHTML="";
 snapshot.forEach((docSnap)=>{
@@ -288,7 +260,7 @@ window.addReaction = async (id, emoji) => {const refM = doc(db,"chats",currentCh
 window.deleteMessage = async (id) => {await deleteDoc(doc(db,"chats",currentChatId,"messages",id));}
 window.editMessage = async (id, oldText) => {let newText = prompt('Edit message:', oldText); if(newText){await updateDoc(doc(db,"chats",currentChatId,"messages",id),{text:newText,edited:true});}}
 
-// === VOICE + MEDIA ===
+// === 12. VOICE NOTES + 13. VIDEO/IMAGE UPLOAD ===
 document.getElementById("micBtn").onmousedown = startRecording;
 document.getElementById("micBtn").onmouseup = stopRecording;
 document.getElementById("micBtn").ontouchstart = startRecording;
@@ -299,7 +271,7 @@ document.getElementById("imgBtn").onclick = () => document.getElementById("media
 document.getElementById("mediaInput").onchange = async e => {const file=e.target.files[0]; if(!file) return; const url=await uploadFile(file,file.type.startsWith('video')?'video':'image'); await sendMessage("", url, file.type.startsWith('video')?'video':'image');}
 async function uploadFile(file, folder){const refS=ref(storage,folder+"/"+Date.now()); await uploadBytes(refS,file); return await getDownloadURL(refS);}
 
-// === SEND + TYPING + GEMINI ===
+// === 14. SEND + 15. TYPING LIVE + 16. GEMINI AI ===
 document.getElementById("sendBtn").onclick = () => sendMessage();
 document.getElementById("messageInput").oninput = () => {
 if(currentChatId &&!currentChatId.startsWith('bot_chat_')){updateDoc(doc(db,'typing',currentChatId), {[me.uid]:true}); clearTimeout(typingTimeout); typingTimeout=setTimeout(()=>updateDoc(doc(db,'typing',currentChatId), {[me.uid]:false}),2000);}
@@ -316,6 +288,7 @@ if(mediaType==='image') payload.image=mediaUrl; if(mediaType==='video') payload.
 await addDoc(collection(db,"chats",currentChatId,"messages"), payload);
 document.getElementById("messageInput").value="";
 
+// BOT REPLY
 if(currentChatId.startsWith("bot_chat_")){
 document.getElementById("typing").innerText = "Khamis AI is typing...";
 const reply = await callGemini(text);
